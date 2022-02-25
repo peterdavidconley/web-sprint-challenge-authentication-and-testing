@@ -1,15 +1,13 @@
-const db = require('../../data/db-config.js');
+const db = require('../../data/dbConfig');
 
 function find() {
-
     return db('users')
-
 }
 
-function findById(user_id) {
+function findById(id) {
 
     return db('users')
-    .where('users.user_id', user_id).first()
+    .where('users.id', id).first()
 
 }
 
