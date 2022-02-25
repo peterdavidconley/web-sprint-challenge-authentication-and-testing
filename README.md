@@ -44,16 +44,27 @@ Your finished project must include all of the following requirements (further in
 
 ## Submission format
 
-- [ ] Submit via Codegrade by pushing commits to your `main` branch on Github.
-- [ ] Check Codegrade before the deadline to compare its results against your local tests.
-- [ ] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
-- [ ] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
+- [x] Submit via Codegrade by pushing commits to your `main` branch on Github.
+- [x] Check Codegrade before the deadline to compare its results against your local tests.
+- [x] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
+- [x] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
 
 ## Interview Questions
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+
+Sessions are periods of time/duration that allows an authenticated user to access certain resources on a server. JSON Web Tokens are objects that allow for authentication when communicating with a server. 
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+
+`bcryptjs` is a library that allows hashing functions. Hashing functions 'scramble' the original password into an encrypted language that allows for one way data flow of a password. 
+
 3. How are unit tests different from integration and end-to-end testing?
+
+Unit tests are used to test specific components, sections, or "chunks" of code on an application. They are typically smaller in scope and are used to zero in on specific functions or areas. Integration tests are used to test data flow/interaction between components or sections of code to ensure continuity between sections. End-to-end testing simulates a user's interaction of an application from start to finish. 
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+
+Test driven development starts with the writing of tests first, ensuring passing of those tests, then refracturing your code in accordance with those tests. 
