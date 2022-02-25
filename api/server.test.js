@@ -14,11 +14,19 @@ test('sanity', () => {
 describe('/register Endpoint Tests', () => {
 
   test('User can not register without a username', () => {
-    expect(true).toBe(false)
+
+    await request(server).post('/api/auth/register').send({ password: '1234' })
+      const noUser = await db('users').where('username', ' ').first()
+      expect(noUser).not.toBe()
+
   })
 
   test('User can successfully register with proper password and username', () => {
-    expect(true).toBe(false)
+
+    await request(server).post('/api/auth/register').send({ username: 'bob', password: '1234' })
+      const bob = await db('users').where('username', 'bob').first()
+      expect(bob).toMatchObject({ username: 'bob' })
+
   })
 
 
