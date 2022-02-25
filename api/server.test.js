@@ -1,3 +1,12 @@
+const User = require('./auth/users-model');
+const db = require('../data/dbConfig');
+const request = require('supertest');
+const server = require('./server');
+
+beforeEach(async () => {
+  await db('users').truncate();
+});
+
 test('sanity', () => {
   expect(true).toBe(true)
 })

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 JWT_SECRET: process.env.JWT_SECRET || 'shh'
-
+const User = require('./users-model');
 
 router.post('/register', (req, res) => {
 
@@ -32,7 +32,28 @@ router.post('/register', (req, res) => {
       the response body should include a string exactly as follows: "username taken".
   */
 
+      const { username, password } = req.body
+      const hash = bcrypt.hashSync(password, 8)
+      User.add({ username, password: hash })
+        .then( newUser => {
 
+          if (!newUser.name || !newUser.password) {
+
+            res.status(401).json({ message: 'username and password required'})
+            next()
+
+          } else if (newUser.name === '') {
+
+            res.status(401).json({ message: 'username taken'})
+            next()
+
+          } else {
+            res.status(201).json(newUser)
+          }
+
+          
+        })
+        .catch(next)
       
 });
 
