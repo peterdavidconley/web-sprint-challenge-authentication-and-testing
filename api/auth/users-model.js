@@ -11,6 +11,13 @@ function findById(id) {
 
 }
 
+function findBy(filter) {
+
+    return db('users')
+      .where(filter)
+
+}
+
 async function add({ username, password }) {
 
   let created_user_id
@@ -25,5 +32,6 @@ async function add({ username, password }) {
 module.exports = {
   add,
   find,
+  findBy,
   findById,
 };

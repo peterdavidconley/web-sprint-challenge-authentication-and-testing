@@ -3,8 +3,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 JWT_SECRET: process.env.JWT_SECRET || 'shh'
 const User = require('./users-model');
+const { checkUsernameExists } = require('../middleware/username');
 
-router.post('/register', (req, res) => {
+router.post('/register', checkUsernameExists, (req, res) => {
 
   /*
     IMPLEMENT
@@ -42,16 +43,9 @@ router.post('/register', (req, res) => {
             res.status(401).json({ message: 'username and password required'})
             next()
 
-          } else if (newUser.name === '') {
-
-            res.status(401).json({ message: 'username taken'})
-            next()
-
-          } else {
+          }  else {
             res.status(201).json(newUser)
           }
-
-          
         })
         .catch(next)
       
