@@ -35,11 +35,13 @@ describe('/register Endpoint Tests', () => {
 describe('/login Endpoint Tests', () => {
 
   test('Unregistered user can not login', () => {
-    expect(true).toBe(false)
+    const res = await request(server).post('/api/auth/login').send({ password: '1234' })
+    expect(res.body.message).toMatch(/username and password required/i)
   })
 
   test('Registered user can login', () => {
-    expect(true).toBe(false)
+    const res = await request(server).post('/api/auth/login').send({ username: 'sally', password: '1234' })
+      expect(res.body.message).toMatch(/welcome, sally/i)
   })
 
 
